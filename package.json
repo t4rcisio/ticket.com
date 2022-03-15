@@ -1,0 +1,31 @@
+{
+  "name": "ticket.com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/t4rcisio/ticket.com.git"
+  },
+  "workspaces": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/t4rcisio/ticket.com/issues"
+  },
+  "homepage": "https://github.com/t4rcisio/ticket.com#readme",
+  "dependencies": {
+    "@prisma/client": "^3.10.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "helmet": "^5.0.2",
+    "joi": "^17.6.0",
+    "morgan": "^1.10.0",
+    "prisma": "^3.10.0",
+    "winston": "^3.6.0"
+  }
+}
