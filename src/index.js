@@ -1,30 +1,28 @@
-const {
-    PrismaClient
-} = require("@prisma/client");
+import express from "express";
+import helmet from "helmet";
+import dotenv from "dotenv"
+import morgan from "morgan";
+import cors from "cors"
+import router from "./router/router.js"
 
 
-const prisma = new PrismaClient();
 
-/*
-async function createUser(Name, Email, Password, bithday, id_, Phone) {
-    const data = await prisma.user.create({
-        data: {
-            Name,
-            Email,
-            Password,
-            bithday,
-            Phone
-        }
-    })
-}
+const port = process.env.PORT || 3000;
+const app = express()
 
-const data = createUser("Tarcisio", "tarcisio@gmail.com", "123456" , new Date(), "33988745548");
-*/
-(async () => {
-    const data = await prisma.user.findMany({
-        select: {
-            Name: true
-        }
-    });
-    console.log(data);
-})()
+
+dotenv.config();
+app.use(express.json())
+app.use(cors())
+app.use(morgan("dev"));
+app.use(helmet());
+app.use(router)
+
+app.get("/", (request, response) => {
+    response.send("Welcome to Tickets.com ");
+})
+
+
+app.listen(port, () => {
+    console.log(`Server running on ${port} -> http://localhost:${port}/`)
+})
