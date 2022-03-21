@@ -1,4 +1,5 @@
 import prisma from "../prisma.js"
+import logger from "../utils/logger.js"
 
 
 
@@ -7,7 +8,20 @@ class Controller {
 
     constructor(table) {
         this.table = table
-        this.client = prisma["user"]
+        this.client = prisma[table]
+    }
+
+
+    async search(request, response) {
+        let clientData
+        try {
+            clientData = await this.client.findUnique({
+                where: request.data
+            })
+        } catch (error) {
+            return false
+        }
+        return clientData
     }
 
 
@@ -15,8 +29,9 @@ class Controller {
         const {
             id
         } = request.params
+        let clientData
         try {
-            const clientData = await this.client.findUnique({
+            clientData = await this.client.findUnique({
                 where: {
                     id
                 }
@@ -24,7 +39,8 @@ class Controller {
             response.json(clientData)
 
         } catch (error) {
-            response.send(error)
+            logger.error(`${error}`)
+            response.send("Error to read data, check log file to more errorrmation")
         }
     }
 
@@ -33,10 +49,10 @@ class Controller {
         let clientData
         try {
             clientData = await this.client.findMany({})
-        } catch (error) {
-            clientData = error
-        } finally {
             response.send(clientData)
+        } catch (error) {
+            logger.error(`${error}`)
+            response.send("Error to read data, check log file to more errorrmation")
         }
     }
 
@@ -49,10 +65,10 @@ class Controller {
             clientData = await this.client.create({
                 data: request.data
             })
-        } catch (error) {
-            clientData = error
-        } finally {
             response.send(clientData)
+        } catch (error) {
+            logger.error(`${error}`)
+            return response.send("Error to store data, check log file to more errorrmation")
         }
     }
 
@@ -69,9 +85,8 @@ class Controller {
                 }
             })
         } catch (error) {
-            clientData = error
-        } finally {
-            response.send(clientData)
+            logger.error(`${error}`)
+            response.send("Error to store data, check log file to more errorrmation")
         }
     }
 
@@ -86,10 +101,10 @@ class Controller {
                     id
                 }
             })
+
         } catch (error) {
-            clientData = error
-        } finally {
-            response.send(clientData)
+            logger.error(`${error}`)
+            response.send("Error to store data, check log file to more errorrmation")
         }
     }
 

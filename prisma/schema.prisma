@@ -30,22 +30,26 @@ model Room {
   id           String     @id @default(uuid())
   createdAt    DateTime   @default(now())
   updatedAt    DateTime   @updatedAt
-  identifier   String
+  Reference    String
   category     movieRoom  @default(STANDARD)
-  capacibility Int
+  Capacibility Int
   availability DateTime[]
   Session      Session[]
 }
 
 model Session {
-  id        String   @id @default(uuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  date      DateTime
-  roomId    String
-  movieId   String
-  movie     Movie    @relation(fields: [movieId], references: [id])
-  room      Room     @relation(fields: [roomId], references: [id])
+  id          String    @id @default(uuid())
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  SessionDate DateTime
+  Price       Float
+  RoomId      String
+  MovieId     String
+  Movie       Movie     @relation(fields: [MovieId], references: [id])
+  Room        Room      @relation(fields: [RoomId], references: [id])
+  Ticket      Ticket[]
+  Discount    Discount? @relation(fields: [discountId], references: [id])
+  discountId  String
 }
 
 model User {
@@ -58,6 +62,30 @@ model User {
   Phone       String?
   Birthday    DateTime    @default(now())
   Permissions Permissions @default(USER)
+  Rules       String?
+}
+
+model Ticket {
+
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  Session   Session  @relation(fields: [sessionId], references: [id])
+  Seat      String
+  sessionId String
+}
+
+model Discount {
+
+  id            String       @id @default(uuid())
+  createdAt     DateTime     @default(now())
+  Name          String       @unique
+  Discount      Float
+  Begin_date    DateTime
+  End_date      DateTime
+  Availibity    availability @default(EVERYONE)
+  id_associated String[]
+
+  Session Session[]
 }
 
 enum Age_rating {
@@ -72,6 +100,14 @@ enum Language {
   en_US
   pt_BR
   es_ES
+}
+
+enum availability {
+  EVERYONE
+  BIRTHDAY
+  USER
+  SESSION
+  MOVIE
 }
 
 enum Subtitle {

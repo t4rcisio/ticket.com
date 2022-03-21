@@ -1,0 +1,51 @@
+{"level":"info","message":"Server running on 3000 -> http://localhost:3000/","timestamp":"2022-03-21T18:30:06.540Z"}
+{"level":"info","message":"Server running on 3000 -> http://localhost:3000/","timestamp":"2022-03-21T18:30:08.179Z"}
+{"level":"warn","message":"INAUTHENTIC TOKEN : TokenExpiredError: jwt expired","timestamp":"2022-03-21T18:30:18.611Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [21/Mar/2022:18:30:18 +0000] \"GET /user/get/123 HTTP/1.1\" 401 11 \"-\" \"insomnia/2022.1.1\"\n","timestamp":"2022-03-21T18:30:18.625Z"}
+{"level":"warn","message":"INAUTHENTIC TOKEN : TokenExpiredError: jwt expired","timestamp":"2022-03-21T18:30:47.016Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [21/Mar/2022:18:30:47 +0000] \"GET /user/create/123 HTTP/1.1\" 401 11 \"-\" \"insomnia/2022.1.1\"\n","timestamp":"2022-03-21T18:30:47.021Z"}
+{"level":"warn","message":"INAUTHENTIC TOKEN : TokenExpiredError: jwt expired","timestamp":"2022-03-21T18:30:52.348Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [21/Mar/2022:18:30:52 +0000] \"GET /user/create HTTP/1.1\" 401 11 \"-\" \"insomnia/2022.1.1\"\n","timestamp":"2022-03-21T18:30:52.353Z"}
+{"level":"info","message":"Server running on 3000 -> http://localhost:3000/","timestamp":"2022-03-21T18:31:21.501Z"}
+{"level":"info","message":"Server running on 3000 -> http://localhost:3000/","timestamp":"2022-03-21T18:31:52.289Z"}
+{"level":"info","message":"Server running on 3000 -> http://localhost:3000/","timestamp":"2022-03-21T18:31:55.275Z"}
+{"level":"warn","message":"INAUTHENTIC TOKEN : TokenExpiredError: jwt expired","timestamp":"2022-03-21T18:31:55.391Z"}
+{"level":"info","message":"::1 - - [21/Mar/2022:18:31:55 +0000] \"GET /user/create HTTP/1.1\" 404 150 \"-\" \"insomnia/2022.1.1\"\n","timestamp":"2022-03-21T18:31:55.407Z"}
+{"level":"warn","message":"INAUTHENTIC TOKEN : TokenExpiredError: jwt expired","timestamp":"2022-03-21T18:31:59.548Z"}
+{"level":"info","message":"Server running on 3000 -> http://localhost:3000/","timestamp":"2022-03-21T18:32:08.412Z"}
+{"level":"info","message":"Server running on 3000 -> http://localhost:3000/","timestamp":"2022-03-21T18:32:15.032Z"}
+{"level":"info","message":"Server running on 3000 -> http://localhost:3000/","timestamp":"2022-03-21T18:32:20.253Z"}
+{"level":"warn","message":"INAUTHENTIC TOKEN : TokenExpiredError: jwt expired","timestamp":"2022-03-21T18:32:21.837Z"}
+{"level":"info","message":"Server running on 3000 -> http://localhost:3000/","timestamp":"2022-03-21T18:35:27.464Z"}
+{"level":"warn","message":"INAUTHENTIC TOKEN : TokenExpiredError: jwt expired","timestamp":"2022-03-21T18:35:27.924Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [21/Mar/2022:18:35:27 +0000] \"POST /user/create HTTP/1.1\" 401 11 \"-\" \"insomnia/2022.1.1\"\n","timestamp":"2022-03-21T18:35:27.947Z"}
+{"level":"error","message":"Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client","timestamp":"2022-03-21T18:35:28.231Z"}
+{"level":"info","message":"Server running on 3000 -> http://localhost:3000/","timestamp":"2022-03-21T18:36:59.976Z"}
+{"level":"warn","message":"INAUTHENTIC TOKEN : TokenExpiredError: jwt expired","timestamp":"2022-03-21T18:37:00.564Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [21/Mar/2022:18:37:00 +0000] \"POST /user/create HTTP/1.1\" 401 11 \"-\" \"insomnia/2022.1.1\"\n","timestamp":"2022-03-21T18:37:00.591Z"}
+{"level":"error","message":"Error: \nInvalid `prisma.user.create()` invocation:\n\n\n  Unique constraint failed on the fields: (`Email`)","timestamp":"2022-03-21T18:37:00.747Z"}
+{"level":"info","message":"Server running on 3000 -> http://localhost:3000/","timestamp":"2022-03-21T18:37:51.137Z"}
+{"level":"warn","message":"INAUTHENTIC TOKEN : TokenExpiredError: jwt expired","timestamp":"2022-03-21T18:38:00.045Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [21/Mar/2022:18:38:00 +0000] \"POST /user/create HTTP/1.1\" 401 11 \"-\" \"insomnia/2022.1.1\"\n","timestamp":"2022-03-21T18:38:00.065Z"}
+{"level":"error","message":"Error: \nInvalid `prisma.user.create()` invocation:\n\n\n  Unique constraint failed on the fields: (`Email`)","timestamp":"2022-03-21T18:38:00.206Z"}
+{"level":"info","message":"Server running on 3000 -> http://localhost:3000/","timestamp":"2022-03-21T18:38:40.460Z"}
+{"level":"warn","message":"INAUTHENTIC TOKEN : TokenExpiredError: jwt expired","timestamp":"2022-03-21T18:38:40.541Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [21/Mar/2022:18:38:40 +0000] \"POST /user/create HTTP/1.1\" 401 11 \"-\" \"insomnia/2022.1.1\"\n","timestamp":"2022-03-21T18:38:40.561Z"}
+{"level":"info","message":"Server running on 3000 -> http://localhost:3000/","timestamp":"2022-03-21T18:39:20.312Z"}
+{"level":"info","message":"Server running on 3000 -> http://localhost:3000/","timestamp":"2022-03-21T18:39:33.853Z"}
+{"level":"warn","message":"INAUTHENTIC TOKEN : TokenExpiredError: jwt expired","timestamp":"2022-03-21T18:39:33.908Z"}
+{"level":"info","message":"Server running on 3000 -> http://localhost:3000/","timestamp":"2022-03-21T18:40:11.440Z"}
+{"level":"info","message":"Server running on 3000 -> http://localhost:3000/","timestamp":"2022-03-21T18:40:15.147Z"}
+{"level":"info","message":"Server running on 3000 -> http://localhost:3000/","timestamp":"2022-03-21T18:40:21.831Z"}
+{"level":"info","message":"Server running on 3000 -> http://localhost:3000/","timestamp":"2022-03-21T18:40:28.451Z"}
+{"level":"info","message":"Server running on 3000 -> http://localhost:3000/","timestamp":"2022-03-21T18:40:31.087Z"}
+{"level":"info","message":"Server running on 3000 -> http://localhost:3000/","timestamp":"2022-03-21T18:40:33.773Z"}
+{"level":"info","message":"Server running on 3000 -> http://localhost:3000/","timestamp":"2022-03-21T18:40:36.080Z"}
+{"level":"info","message":"Server running on 3000 -> http://localhost:3000/","timestamp":"2022-03-21T18:40:47.619Z"}
+{"level":"info","message":"Server running on 3000 -> http://localhost:3000/","timestamp":"2022-03-21T18:40:53.204Z"}
+{"level":"info","message":"Server running on 3000 -> http://localhost:3000/","timestamp":"2022-03-21T18:40:57.230Z"}
+{"level":"error","message":"Error: \nInvalid `prisma.user.create()` invocation:\n\n\n  Unique constraint failed on the fields: (`Email`)","timestamp":"2022-03-21T18:40:57.674Z"}
+{"level":"info","message":"::1 - - [21/Mar/2022:18:40:57 +0000] \"POST /user/create HTTP/1.1\" 200 56 \"-\" \"insomnia/2022.1.1\"\n","timestamp":"2022-03-21T18:40:57.692Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [21/Mar/2022:18:41:27 +0000] \"POST /user/create HTTP/1.1\" 200 342 \"-\" \"insomnia/2022.1.1\"\n","timestamp":"2022-03-21T18:41:27.916Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [21/Mar/2022:18:41:37 +0000] \"POST /user/login HTTP/1.1\" 200 194 \"-\" \"insomnia/2022.1.1\"\n","timestamp":"2022-03-21T18:41:37.769Z"}
+{"level":"info","message":"Server running on 3000 -> http://localhost:3000/","timestamp":"2022-03-21T18:44:11.442Z"}

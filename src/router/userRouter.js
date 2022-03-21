@@ -12,6 +12,7 @@ router.post("/update/:id", userController.update.bind(userController))
 router.delete("/delete/:id", userController.delete.bind(userController))
 router.get("/get/:id", userController.getOne.bind(userController))
 router.get("/get", userController.getMany.bind(userController))
+router.post("/login", userController.login.bind(userController))
 
 
 export default router

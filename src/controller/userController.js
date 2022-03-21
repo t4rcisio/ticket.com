@@ -1,11 +1,27 @@
 import bcrypt from "bcryptjs";
 import controller from "./controller.js"
+import Joi from "joi";
+import jsonwebtoken from "jsonwebtoken";
+
+const schema = Joi.object({
+    Name: Joi.string().required(),
+    Email: Joi.string().required(),
+    Password: Joi.string().required(),
+    Birthday: Joi.date().required(),
+    Phone: Joi.string().alphanum()
+})
+
+const loginSchema = Joi.object({
+    Email: Joi.string().required(),
+    Password: Joi.string().required(),
+})
+
 
 
 class UserController extends controller {
 
     constructor() {
-        super('User')
+        super('user')
     }
 
     hashPassword(password) {
@@ -25,8 +41,20 @@ class UserController extends controller {
         if (!Name || !Email || !Password || !Birthday)
             return response.send("Bad request").status(400)
 
-        const nBirthday = new Date(Date.parse(Birthday))
-        const hash = this.hashPassword(Password)
+        const mBirthday = new Date(Date.parse(Birthday))
+
+        const mPassword = this.hashPassword(Password)
+
+        const mSchema = schema.validate({
+            Name,
+            Email,
+            Password: mPassword,
+            Phone,
+            Birthday: mBirthday
+        })
+
+        if (mSchema.error)
+            return response.send("Error data").json(mSchema).status(400)
 
         /*
         Insert "data" as parameter to store data without change generic controller functions
@@ -34,11 +62,11 @@ class UserController extends controller {
         request.data = {
             Name,
             Email,
-            Password: hash,
-            Birthday: nBirthday,
+            Password: mPassword,
+            Birthday: mBirthday,
             Phone
         }
-        await super.create(request, response)
+        return await super.create(request, response)
     }
 
     async update(request, response) {
@@ -58,18 +86,25 @@ class UserController extends controller {
             Birthday
         } = request.body;
 
-        const nBirthday = new Date(Date.parse(Birthday))
-        const hash = this.hashPassword(Password)
+        const mBirthday = new Date(Date.parse(Birthday))
+        const mPassword = this.hashPassword(Password)
 
-        /*
-        Insert "data" as parameter to store data without change generic controller functions
-        */
+        const mSchema = schema.validate({
+            Name,
+            Email,
+            Password: mPassword,
+            Phone,
+            Birthday: mBirthday
+        })
+
+        if (mSchema.error)
+            return response.send("Error data").json(mSchema).status(400)
 
         request.data = {
             Name,
             Email,
-            Password: hash,
-            Birthday: nBirthday,
+            Password: mPassword,
+            Birthday: mBirthday,
             Phone
         }
 
@@ -85,6 +120,49 @@ class UserController extends controller {
             response.send("Request params {id}")
 
         await super.delete(request, response)
+    }
+
+    async login(request, response) {
+
+        const {
+            Email,
+            Password
+        } = request.body
+        const mSchema = loginSchema.validate({
+            Email,
+            Password
+        })
+
+        if (mSchema.error)
+            return response.send("Error data").json(mSchema).status(400)
+
+        request.data = {
+            Email
+        }
+        const userlogin = await super.search(request, response)
+        if (!userlogin)
+            response.send("Incorrect Email or Password").status(403)
+
+
+        const hash = bcrypt.compareSync(Password, userlogin.Password)
+
+        if (!hash)
+            response.send("Incorrect Email or Password").status(403)
+
+        const payload = {
+            id: userlogin.id
+        }
+
+        const token = jsonwebtoken.sign(payload, process.env.WEBTOKENSEED, {
+            expiresIn: "3h"
+        })
+
+        if (typeof sessionStorage !== undefined)
+            return response.setHeader(process.env.BROWSER_KEY, "Bearer " + token).send(`Bearer ${token}`).status(200)
+
+        sessionStorage.setItem(process.env.BROWSER_KEY, token)
+
+        response.send(`Bearer ${token}`).status(200)
     }
 
 }
